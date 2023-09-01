@@ -10,6 +10,7 @@ lista_opciones = ["Vaccine", "Virus", "Data"]
 respuesta = None
 # MENSAJES
 lista_mensajes = ["Gana el usuario!", "Derrota...", "Empate!"]
+# SCORE
 
 while True:
     print("\n* VACCINE VS. VIRUS VS. DATA *")
@@ -17,22 +18,16 @@ while True:
     print("2. Virus")
     print("3. Data")
     print("4. Salir del juego.")
-    opcion_elegida = input("Ingrese una de las siguientes opciones: ")
-    #opcion_elegida = pedir_un_numero_entero("Ingrese una de las siguientes opciones: ", "ERROR! Debe ingresar un numero.")
-
-    #print(f"\nVALOR INGRESADO {opcion_elegida}, tipo: {type(opcion_elegida)}\n")
-
-    if validar_numero_entero(opcion_elegida):
-        opcion_elegida = int(opcion_elegida)
-        if opcion_elegida > 0 and opcion_elegida < 5:
-            if opcion_elegida == 4:
-                break
-            opcion_elegida_final = lista_opciones[opcion_elegida - 1]
-            opcion_maquina = random.choice(lista_opciones)
-        else:
-            print("ERROR! El numero ingresado no es una opcion valida.")
+    opcion_elegida = pedir_un_numero_entero("Ingrese una de las siguientes opciones: ", "ERROR! Debe ingresar un numero.")
+    
+    opcion_elegida = int(opcion_elegida)
+    if opcion_elegida > 0 and opcion_elegida < 5:
+        if opcion_elegida == 4:
+            break
+        opcion_elegida_final = lista_opciones[opcion_elegida - 1]
+        opcion_maquina = random.choice(lista_opciones)
     else:
-        print("ERROR! Debe ingresar un numero.")
+        print("ERROR! El numero ingresado no es una opcion valida.")
 
     if opcion_elegida_final != None:
         print(f"La opcion elegida fue {opcion_elegida_final}.")
@@ -60,8 +55,8 @@ while True:
                     print(lista_mensajes[1])
                 else:
                     print(lista_mensajes[2])
+        opcion_elegida_final = None
         
         respuesta = input("Desea jugar otra vez? Si(s) No(Cualquier tecla): ").lower()
-        #print(f"\nRESPUESTA {respuesta}\n")
         if respuesta != "s":
             break
